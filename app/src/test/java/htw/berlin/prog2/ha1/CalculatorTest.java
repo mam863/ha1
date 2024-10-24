@@ -145,4 +145,25 @@ class CalculatorTest {
         assertEquals(expected, actual);
     }
 
+    /**
+     * Testet die maximale Anzahl an darstellbaren Ziffern.
+     *
+     * <p>Überprüft, ob der Taschenrechner nicht mehr als 10 Ziffern auf dem Bildschirm anzeigt,
+     * wenn elf Ziffern eingegeben werden.</p>
+     */
+    @Test
+    @DisplayName("should not display more than 10 digits")
+    void testMaxDigitLength() {
+        Calculator calc = new Calculator();
+
+        for (int i = 0; i < 11; i++) {
+            calc.pressDigitKey(1);
+        }
+
+        String expected = "1111111111";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
 }
