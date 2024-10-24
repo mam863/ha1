@@ -165,5 +165,25 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
+    /**
+     * Testet die Eingabe eines Dezimalpunkts nach einer Operation.
+     *
+     * <p>Überprüft, ob der Taschenrechner nach der Eingabe einer binären Operation
+     * (z.B. Addition) weiterhin die korrekte Eingabe eines Dezimalpunkts ermöglicht.</p>
+     */
+    @Test
+    @DisplayName("should allow decimal point input correctly after an operation")
+    void testDecimalInputAfterOperation() {
+        Calculator calc = new Calculator();
 
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(3);
+        calc.pressDotKey();
+
+        String expected = "3.";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
 }
