@@ -87,8 +87,50 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-
-
     //TODO hier weitere Tests erstellen
-}
+    @Test
+    @DisplayName("should clear the screen when the clear key is pressed")
+    void testClearKey() {
+        Calculator calc = new Calculator();
 
+        calc.pressDigitKey(5);
+        calc.pressDigitKey(3);
+        calc.pressClearKey();
+
+        String expected = "0";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should not display more than 10 digits")
+    void testMaxDigitLength() {
+        Calculator calc = new Calculator();
+
+        for (int i = 0; i < 11; i++) {
+            calc.pressDigitKey(1);
+        }
+
+        String expected = "1111111111";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("should allow decimal point input correctly after an operation")
+    void testDecimalInputAfterOperation() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(2);
+        calc.pressBinaryOperationKey("+");
+        calc.pressDigitKey(3);
+        calc.pressDotKey();
+
+        String expected = "3.";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+}
