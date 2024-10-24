@@ -172,6 +172,7 @@ class CalculatorTest {
      * (z.B. Addition) weiterhin die korrekte Eingabe eines Dezimalpunkts ermöglicht.</p>
      */
     @Test
+
     @DisplayName("should allow decimal point input correctly after an operation")
     void testDecimalInputAfterOperation() {
         Calculator calc = new Calculator();
