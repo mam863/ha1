@@ -239,7 +239,7 @@ class CalculatorTest {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(5);
-        calc.pressBinaryOperationKey("%"); // افترض أن "%" غير مدعوم
+        calc.pressBinaryOperationKey("%"); 
         calc.pressDigitKey(3);
         calc.pressEqualsKey();
 
