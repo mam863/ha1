@@ -136,11 +136,9 @@ class CalculatorTest {
     @DisplayName("should clear the screen when the clear key is pressed")
     void testClearKey() {
         Calculator calc = new Calculator();
-
         calc.pressDigitKey(5);
         calc.pressDigitKey(3);
         calc.pressClearKey();
-
         String expected = "0";
         String actual = calc.readScreen();
 
@@ -263,13 +261,14 @@ class CalculatorTest {
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(7);
-        calc.pressEqualsKey(); // الضغط مباشرة على يساوي
+        calc.pressEqualsKey(); // Directly pressing equals
 
-        String expected = "Error";
+        String expected = "Error: No operation set";
         String actual = calc.readScreen();
 
         assertEquals(expected, actual);
     }
+
 
 
     }
