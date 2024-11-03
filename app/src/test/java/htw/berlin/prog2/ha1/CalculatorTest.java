@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  * Testklasse für den Retro-Taschenrechner.
  *
  * <p>Diese Klasse enthält verschiedene Tests zur Überprüfung der Funktionalität
- * der Implementierung des Taschenrechners. Jeder Test prüft spezifische Berechnungen
+ * der Implementierung des Taschenrechners. Jeder Tes Digitis nichts mehrBerechnungen
  * oder Fehlerfälle, die der Taschenrechner korrekt handhaben sollte.</p>
  */
 @DisplayName("Retro calculator")
@@ -24,6 +24,8 @@ class CalculatorTest {
     @Test
     @DisplayName("should display result after adding two positive multi-digit numbers")
     void testPositiveAddition() {
+        // Testcode hier...
+
         Calculator calc = new Calculator();
 
         calc.pressDigitKey(2);
@@ -187,4 +189,87 @@ class CalculatorTest {
 
         assertEquals(expected, actual);
     }
-}
+    /**
+     * Testet die Funktionalität von pressDigitKey().
+     *
+     * <p>Überprüft, ob die Eingabe von Ziffern korrekt funktioniert,
+     * auch nach einer binären Operation.</p>
+     */
+        void testWeirdFunctionalityOfPressDigitKey() {
+            Calculator calc = new Calculator();
+
+            calc.pressDigitKey(5);
+            calc.pressBinaryOperationKey("+");
+            calc.pressDigitKey(5);
+            calc.pressDigitKey(3);
+            String expected = "53";
+            String actual = calc.readScreen();
+
+            assertEquals(expected, actual);
+        }
+
+    /**
+     * Testet die Subtraktion von zwei positiven Zahlen.
+     *
+     * <p>Überprüft, ob der Taschenrechner nach der Subtraktion von "5" und "3"
+     * das erwartete Ergebnis "2" anzeigt.</p>
+     */
+    @Test
+    @DisplayName("should display result after subtracting two positive numbers")
+    void testPositiveSubtraction() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("-");
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+
+        String expected = "2";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+    /**
+     * Testet die Behandlung ungültiger Operationen.
+     *
+     * <p>Überprüft, ob der Taschenrechner bei einer ungültigen Operation (z.B. "%")
+     * eine Fehlermeldung ("Error") anzeigt.</p>
+     */
+    @Test
+    @DisplayName("should display error when trying to perform an invalid operation")
+    void testInvalidOperation() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(5);
+        calc.pressBinaryOperationKey("%"); // افترض أن "%" غير مدعوم
+        calc.pressDigitKey(3);
+        calc.pressEqualsKey();
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+    /**
+     * Testet die Eingabe von "=" ohne vorherige Operation.
+     *
+     * <p>Überprüft, ob der Taschenrechner eine Fehlermeldung ("Error") anzeigt,
+     * wenn "=" direkt gedrückt wird.</p>
+     */
+    @Test
+    @DisplayName("should display error when pressing equals without an operation")
+    void testEqualsWithoutOperation() {
+        Calculator calc = new Calculator();
+
+        calc.pressDigitKey(7);
+        calc.pressEqualsKey(); // الضغط مباشرة على يساوي
+
+        String expected = "Error";
+        String actual = calc.readScreen();
+
+        assertEquals(expected, actual);
+    }
+
+
+    }

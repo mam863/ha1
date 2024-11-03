@@ -2,7 +2,7 @@ package htw.berlin.prog2.ha1;
 
 /**
  * Eine Klasse, die das Verhalten des Online Taschenrechners imitiert, welcher auf
- * https://www.online-calculator.com/ aufgerufen werden kann (ohne die Memory-Funktionen)
+// * https://www.online-calculator.com/ aufgerufen werden kann (ohne die Memory-Funktionen)
  * und dessen Bildschirm bis zu zehn Ziffern plus einem Dezimaltrennzeichen darstellen kann.
  * Enthält mit Absicht noch diverse Bugs oder unvollständige Funktionen.
  */
@@ -130,4 +130,31 @@ public class Calculator {
         if(screen.endsWith(".0")) screen = screen.substring(0,screen.length()-2);
         if(screen.contains(".") && screen.length() > 11) screen = screen.substring(0, 10);
     }
+
+    public void pressBinaryOperationKey(String operation) {
+        if (!isValidOperation(operation)) {
+            // يمكنك استخدام استثناء أو إعادة "Error" كما هو الحال في شاشتك
+            displayError();
+            return;
+        }
+        // باقي الكود
+    }
+
+    private boolean isValidOperation(String operation) {
+        // تحقق من أن العملية المدخلة صالحة
+        return operation.equals("+") || operation.equals("-") || operation.equals("*") || operation.equals("/");
+    }
+    private boolean isValidOperation(String operation) {
+        // تحقق من أن العملية المدخلة صالحة
+        return operation.equals("+") || operation.equals("-") || operation.equals("*") || operation.equals("/");
+    }
+
+    public void pressEqualsKey() {
+        if (!isOperationPressed) {
+            displayError();
+            return;
+        }
+        // باقي الكود لتنفيذ العملية
+    }
+
 }
